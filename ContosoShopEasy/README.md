@@ -40,10 +40,9 @@ The application follows a layered architecture pattern with the following compon
 
 The application contains the following security issues for educational purposes:
 
-### 1. SQL Injection Vulnerabilities
-- Product search functionality accepts unsanitized input
-- Debug logging shows vulnerable SQL query construction
-- User input validation bypasses dangerous characters
+### 1. Product Search
+- Product search is in-memory and treats SQL-like input as literal text; SQL is not executed (Issue #1 fixed)
+- Other input validation paths may still accept dangerous characters
 
 ### 2. Weak Password Security
 - Uses MD5 hashing for password storage (cryptographically weak)
@@ -105,7 +104,7 @@ dotnet run
 ### Expected Output
 The application will:
 1. Display known security vulnerabilities (for educational purposes)
-2. Demonstrate product search with SQL injection attempts
+2. Demonstrate product search, including SQL-like text handled as a literal search term
 3. Register new users with weak password validation
 4. Perform login attempts including admin backdoor
 5. Create sample orders with realistic pricing

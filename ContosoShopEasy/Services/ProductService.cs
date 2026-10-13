@@ -27,17 +27,8 @@ namespace ContosoShopEasy.Services
             return _productRepository.GetProductsByCategory(categoryId);
         }
 
-        // Vulnerable search method - SQL injection risk
         public List<Product> SearchProducts(string searchTerm)
         {
-            // This simulates a SQL injection vulnerability by directly using user input
-            // In the education context, this would be flagged as a security issue
-            Console.WriteLine($"[DEBUG] Executing search query with term: '{searchTerm}'");
-            
-            // Simulate SQL injection vulnerability by logging dangerous query
-            string simulatedQuery = $"SELECT * FROM Products WHERE Name LIKE '%{searchTerm}%' OR Description LIKE '%{searchTerm}%'";
-            Console.WriteLine($"[DEBUG] SQL Query: {simulatedQuery}");
-            
             return _productRepository.SearchProducts(searchTerm);
         }
 
